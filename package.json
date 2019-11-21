@@ -1,0 +1,8 @@
+{
+  "name": "l10n-doctor",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Almos Gabor",
+  "license": "MIT",
+  "repository": "https://github.com/sleepingevil/l10n-doctor.git"
+}
