@@ -4,5 +4,26 @@
   "main": "index.js",
   "author": "Almos Gabor",
   "license": "MIT",
-  "repository": "https://github.com/sleepingevil/l10n-doctor.git"
+  "repository": "https://github.com/sleepingevil/l10n-doctor.git",
+  "scripts": {
+    "build": "babel src --out-dir lib --extensions '.ts,.js' --ignore=src/*.test.ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
+    "@babel/register": "^7.10.1",
+    "@types/node": "^14.0.5",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.10.1",
+    "@types/jest": "^25.2.3",
+    "got": "^11.1.4"
+  }
 }
