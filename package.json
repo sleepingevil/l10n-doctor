@@ -22,7 +22,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "@babel/runtime": "^7.10.1",
+    "@babel/runtime": "^7.10.3",
     "@types/jest": "^25.2.3",
     "got": "^11.1.4"
   }
