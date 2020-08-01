@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server Side Lib It should not fetch the second time asking for the same locale 1`] = `
+ContentBundle {
+  "contentElements": Array [
+    Object {
+      "content": "theContent",
+      "contentElementId": "contentElementId1",
+      "id": "uniqueDBIdentifier1",
+      "locale": "en_gb",
+    },
+    Object {
+      "content": "theContent2",
+      "contentElementId": "contentElementId2",
+      "id": "uniqueDBIdentifier2",
+      "locale": "en_gb",
+    },
+  ],
+}
+`;
+
+exports[`Server Side Lib It should return the users's content bundle 1`] = `
+ContentBundle {
+  "contentElements": Array [
+    Object {
+      "content": "theContent",
+      "contentElementId": "contentElementId1",
+      "id": "uniqueDBIdentifier1",
+      "locale": "en_gb",
+    },
+    Object {
+      "content": "theContent2",
+      "contentElementId": "contentElementId2",
+      "id": "uniqueDBIdentifier2",
+      "locale": "en_gb",
+    },
+  ],
+}
+`;

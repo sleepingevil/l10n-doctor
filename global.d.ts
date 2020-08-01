@@ -1,1 +1,0 @@
-declare const L10NDR_URL: string;

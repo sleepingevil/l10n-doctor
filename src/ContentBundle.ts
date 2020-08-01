@@ -1,4 +1,5 @@
 export interface ContentElement {
+  id: string;
   contentElementId: string;
   locale: string;
   content: string;
