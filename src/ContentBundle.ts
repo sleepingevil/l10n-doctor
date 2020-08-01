@@ -1,6 +1,11 @@
-import { ContentElement } from './models';
+export interface ContentElement {
+  id: string;
+  contentElementId: string;
+  locale: string;
+  content: string;
+}
 
-interface GetTextParams { [key: string]: string | number; }
+export interface GetTextParams { [key: string]: string | number; }
 
 export interface GetTextOptions {
   cId: string;
