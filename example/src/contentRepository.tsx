@@ -1,5 +1,4 @@
 import { ContentRepository } from 'l10n-doctor';
 
-// /* Local */const contentRepository = new ContentRepository({ accessKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvd25lcklkIjoiNDNkNzEwMmUtOTNkMi00NTQwLTg3NDMtNTIwMjdjMDE4ZGI5IiwiYXBpS2V5SWQiOiI4YTM5ZGVkZC00NWI2LTRhYzYtOGVmZS1iNzU3N2I3YTgyZTEiLCJkb21haW5zIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiaWF0IjoxNTk2Mjg1ODc3LCJleHAiOjE2Mjc4MjE4NzcsImlzcyI6ImwxMG4tZHIuZXcuci5hcHBzcG90LmNvbSJ9.A16xzKpGyJIvUxABlof7fVaX_nV9t3jwyAShCOs8YX8' });
-/* Prod */ const contentRepository = new ContentRepository({ accessKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvd25lcklkIjoiNDNhYjllMTItYzUyYS00Mzg1LTlhYTMtODZjZDE1YTZlNmZiIiwiYXBpS2V5SWQiOiIyNDM3YjEyYi0yYWE3LTRhNWMtODZjZS03M2MyMjEzYTNjNzAiLCJkb21haW5zIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiaWF0IjoxNTk2MzA0NzUwLCJleHAiOjE2Mjc4NDA3NTAsImlzcyI6ImwxMG4tZHIuZXcuci5hcHBzcG90LmNvbSJ9.XZAFVNOBxrmkmksxeaeJFx_ZnJ_cXsIuxCK0dXwh9KQ' });
+const contentRepository = new ContentRepository({ accessKey: process.env.REACT_APP_L10NDR_TOKEN || '' });
 export const getContentBundle = async (locale: string) => await contentRepository.getContentBundle(locale);

@@ -30,6 +30,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     - run: yarn
+      # env: # Provide test token for E2E tests like this
+      #     REACT_APP_L10NDR_TOKEN: ${{ secrets.L10NDR_TOKEN }}
 
     - run: yarn test
   
