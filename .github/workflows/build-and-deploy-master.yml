@@ -29,41 +29,37 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
-    - run: yarn
-      # env: # Provide test token for E2E tests like this
-      #     REACT_APP_L10NDR_TOKEN: ${{ secrets.L10NDR_TOKEN }}
+    - name: Install dependencies
+      run: yarn
 
-    - run: yarn test
-  
-  # deploy: 
-  #   runs-on: ubuntu-latest
+    - name: Run Unit Tests
+      run: yarn test
+    # env: # Provide test token for E2E tests like this
+    #     REACT_APP_L10NDR_TOKEN: ${{ secrets.L10NDR_TOKEN }}
+    
+    - name: Prepare for NPM publish
+      run: |
+        git config --global user.name "Github Actions CI"
+        git config --global user.email "ci@dreamconflux.com"
+        git reset --hard
+        echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  #   strategy:
-  #     matrix:
-  #       node-version: [12.x]
-  #   needs: [ build ]
-  #   if: "!startsWith(github.event.head_commit.message, 'New version:')"
-  #   steps:
-  #   - uses: actions/checkout@v2
-
-  #   - name: Use Node
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: ${{ matrix.node-version }}
-
-  #   - run: git config --global user.name "Github Actions CI"
-  #   - run: git config --global user.email "ci@dreamconflux.com"
-  #   - run: yarn
-  #   - run: yarn install-peers -f
-  #   - run: git reset --hard
-  #   - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
-  #     env:
-  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #   - run: "npm version patch -m 'New version: %s'"
-  #     if: "!startsWith(github.event.head_commit.message, '[Release M')"
-  #   - run: "npm version minor -m 'New version: %s'"
-  #     if: "startsWith(github.event.head_commit.message, '[Release Minor]')"
-  #   - run: "npm version major -m 'New version: %s'"
-  #     if: "startsWith(github.event.head_commit.message, '[Release Major]')"
-  #   - run: npm publish
-  #   - run: git push --follow-tags
+    - name: Bump patch version
+      run: "npm version patch -m 'New version: %s'"
+      if: "!startsWith(github.event.head_commit.message, '[Release M')"
+    
+    - name: Bump minor version  
+      run: "npm version minor -m 'New version: %s'"
+      if: "startsWith(github.event.head_commit.message, '[Release Minor]')"
+    
+    - name: Bump major version
+      run: "npm version major -m 'New version: %s'"
+      if: "startsWith(github.event.head_commit.message, '[Release Major]')"
+    
+    - name: Publish to NPM
+      run: npm publish
+    
+    - name: Push new tag to git
+      run: git push --follow-tags
