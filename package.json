@@ -9,6 +9,7 @@
   "author": "Almos Gabor",
   "license": "MIT",
   "repository": "https://github.com/sleepingevil/l10n-doctor.git",
+  "description": "Work In Progress: Simple localization library for browsers and node.",
   "scripts": {
     "build": "microbundle --format cjs --target node --external cross-fetch --sourcemap false --compress --define L10NDR_URL='https://l10n-dr.ew.r.appspot.com'",
     "test": "jest --coverage",
